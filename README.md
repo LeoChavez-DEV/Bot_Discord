@@ -31,8 +31,8 @@ Bot de Discord desarrollado en Node.js que permite obtener enlaces de perfiles d
 1. Clona el repositorio:
 
 ```bash
-git clone https://github.com/tuusuario/turepo.git
-cd turepo
+https://github.com/LeoChavez-DEV/Bot_Discord.git
+cd BOT_DISCORD
 ```
 ## Instalar Dependencias
 ```
