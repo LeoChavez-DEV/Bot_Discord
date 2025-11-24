@@ -56,7 +56,7 @@ client.on("messageCreate", (message) => {
     if (message.content === "!jorge") {
         const datos = fs.readFileSync("./datos.txt", "utf8").split("\n").filter(Boolean);
         const random = datos[Math.floor(Math.random() * datos.length)];
-        message.channel.send(random);
+        message.channel.send(`Jorge: "${random}"`);
     }
 
 });
