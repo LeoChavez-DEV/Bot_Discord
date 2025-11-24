@@ -23,6 +23,9 @@ client.on("messageCreate", (message) => {
     if (message.content === "!ping") {
         message.reply("pong");
     }
+    if (message.content === "!llimi") {
+        message.reply("la chupa :smiling_imp: ")
+    }
 
     // Comando !elo
     if (message.content.startsWith("!elo")) {
