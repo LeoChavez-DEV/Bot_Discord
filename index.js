@@ -22,6 +22,16 @@ client.once("ready", () => {
 
 client.on("messageCreate", async (message) => {
 
+    if(message.content === "!info") {
+        return message.reply.send(
+                `!ping : verifica que el bot este activo papi.\n` +
+                `!llimi : no necesita descripción.\n` +
+                `!elo / !elo @ : mirar el op.gg de los 3 desgraciados \n` +
+                `!jorge : datos curiosos del siempre curioso jorge \n ` +
+                `!clima : ver el clima actual de barcelona`
+            );
+    }
+
     // !ping
     if (message.content === "!ping") {
         return message.reply("pong");
