@@ -5,7 +5,6 @@ require("dotenv").config();
 
 const API_KEY = process.env.WEATHER_API_KEY;
 
-//  profiles.json
 let perfiles = JSON.parse(fs.readFileSync("profiles.json", "utf8"));
 
 const client = new Client({
@@ -24,29 +23,25 @@ client.on("messageCreate", async (message) => {
 
     if(message.content === "!info") {
         return message.reply(
-                `!ping : verifica que el bot este activo papi.\n` +
-                `!llimi : no necesita descripción.\n` +
-                `!elo / !elo @ : mirar el op.gg de los 3 desgraciados \n` +
-                `!jorge : datos curiosos del siempre curioso jorge \n ` +
-                `!clima : ver el clima actual de barcelona`
-            );
+            `!ping : verifica que el bot este activo papi\n` +
+            `!llimi : no necesita descripción\n` +
+            `!elo / !elo @ : mirar el op.gg de los 3 desgraciados\n` +
+            `!jorge : datos curiosos del siempre curioso jorge\n` +
+            `!clima : ver el clima actual de barcelona`
+        );
     }
 
-    // !ping
     if (message.content === "!ping") {
         return message.reply("pong");
     }
 
-    // !llimi
     if (message.content === "!llimi") {
         return message.reply("la chupa :smiling_imp: ");
     }
 
-    // !elo general o con mención
     if (message.content.startsWith("!elo")) {
         const mencionado = message.mentions.users.first();
 
-        // !elo general
         if (!mencionado) {
             const links = [
                 "https://op.gg/lol/summoners/euw/TINYX1-EUW",
@@ -57,7 +52,6 @@ client.on("messageCreate", async (message) => {
             return message.reply("Aquí están los 3 perfiles mi rey:\n" + links.join("\n"));
         }
     
-        // !elo @usuario
         const riotID = perfiles[mencionado.id];
     
         if (!riotID) {
@@ -68,13 +62,11 @@ client.on("messageCreate", async (message) => {
         return message.reply(`Mi Rey aquí tienes el elo de este aweonao llamado: "${mencionado.username}":\n${link}`);
     }
 
-    // !jorge
     if (message.content === "!jorge") {
         const datos = fs.readFileSync("./datos.txt", "utf8").split("\n").filter(Boolean);
         const random = datos[Math.floor(Math.random() * datos.length)];
         return message.channel.send(`Jorge: "${random}"`);
     }
-
 
     if (message.content === "!clima") {
         try {
@@ -85,7 +77,7 @@ client.on("messageCreate", async (message) => {
             const temp = data.main.temp;
             const humedad = data.main.humidity;
             const desc = data.weather[0].description;
-            
+
             return message.channel.send(
                 `☀️ Clima en **Barcelona**:\n` +
                 `🌡️ Temperatura: ${temp}°C\n` +
@@ -96,14 +88,9 @@ client.on("messageCreate", async (message) => {
         } catch (err) {
             console.error(err);
             return message.reply("No se puede obtener el clima, ve a tocar pasto y compruebalo tu mismo");
-
         }
-
     }
-
-
 
 });
 
-// Login
 client.login(process.env.TOKEN);
