@@ -3,6 +3,9 @@ const fs = require("fs");
 const axios = require("axios");
 require("dotenv").config();
 
+console.log("API KEY DEL BOT:", process.env.WEATHER_API_KEY);
+console.log("TOKEN DEL BOT:", process.env.TOKEN);
+
 const API_KEY = process.env.WEATHER_API_KEY;
 
 let perfiles = JSON.parse(fs.readFileSync("profiles.json", "utf8"));
@@ -86,7 +89,7 @@ client.on("messageCreate", async (message) => {
             );
 
         } catch (err) {
-            console.error(err);
+             console.error("ERROR COMPLETO:", err.response?.data || err.message);
             return message.reply("No se puede obtener el clima, ve a tocar pasto y compruebalo tu mismo");
         }
     }
