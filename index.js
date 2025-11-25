@@ -23,7 +23,7 @@ client.once("ready", () => {
 client.on("messageCreate", async (message) => {
 
     if(message.content === "!info") {
-        return message.reply.send(
+        return message.reply(
                 `!ping : verifica que el bot este activo papi.\n` +
                 `!llimi : no necesita descripción.\n` +
                 `!elo / !elo @ : mirar el op.gg de los 3 desgraciados \n` +
@@ -85,18 +85,23 @@ client.on("messageCreate", async (message) => {
             const temp = data.main.temp;
             const humedad = data.main.humidity;
             const desc = data.weather[0].description;
-
+            
             return message.channel.send(
                 `☀️ Clima en **Barcelona**:\n` +
                 `🌡️ Temperatura: ${temp}°C\n` +
                 `💧 Humedad: ${humedad}%\n` +
                 `🌤️ Condición: ${desc}`
             );
+
         } catch (err) {
             console.error(err);
             return message.reply("No se puede obtener el clima, ve a tocar pasto y compruebalo tu mismo");
+
         }
+
     }
+
+
 
 });
 
