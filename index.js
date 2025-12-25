@@ -3,9 +3,6 @@ const fs = require("fs");
 const axios = require("axios");
 require("dotenv").config();
 
-console.log("API KEY DEL BOT:", process.env.WEATHER_API_KEY);
-console.log("TOKEN DEL BOT:", process.env.TOKEN);
-
 const API_KEY = process.env.WEATHER_API_KEY;
 
 let perfiles = JSON.parse(fs.readFileSync("profiles.json", "utf8"));
